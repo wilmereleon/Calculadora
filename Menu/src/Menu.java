@@ -6,7 +6,7 @@ public class Menu {
 	public static void main (String[] args) {
 		Scanner mk = new Scanner (System.in); // «mk» is short for menu keyboard
 		double numberEnteredA, numberEnteredB;
-		int option;
+		int option, numA, numB, numC;
 		while(true) {
 			showMenuResult ();
 			option = mk.nextInt();
@@ -19,6 +19,8 @@ public class Menu {
 				System.out.println("Type second number: ");
 				numberEnteredB = mk.nextDouble();
 				System.out.println (getAdd (numberEnteredA, numberEnteredB));
+				System.out.println ("End Program");
+				System.out.println ("");
 				break;
 			case 2:
 				System.out.println("Type first number: ");
@@ -26,6 +28,8 @@ public class Menu {
 				System.out.println("Type second number: ");
 				numberEnteredB = mk.nextDouble();
 				System.out.println (getSubtraction (numberEnteredA, numberEnteredB));
+				System.out.println ("End Program");
+				System.out.println ("");
 				break;
 			case 3:
 				System.out.println("Type first number: ");
@@ -33,6 +37,8 @@ public class Menu {
 				System.out.println("Type second number: ");
 				numberEnteredB = mk.nextDouble();
 				System.out.println (getMultiplication (numberEnteredA, numberEnteredB));
+				System.out.println ("End Program");
+				System.out.println ("");
 				break;
 			case 4:
 				System.out.println("Type first number: ");
@@ -40,9 +46,32 @@ public class Menu {
 				System.out.println("Type second number: ");
 				numberEnteredB = mk.nextDouble();
 				System.out.println (getDivision (numberEnteredA, numberEnteredB));
+				System.out.println ("End Program");
+				System.out.println ("");
+				break;
+			case 5:
+				System.out.println("Write a: ");
+				numA = mk.nextInt();
+				System.out.println("Write b: ");
+				numB = mk.nextInt();
+				System.out.println("Write c: ");
+				numC = mk.nextInt();
+
+				int d = getDiscriminant(numA, numB, numC);
+				if (d < 0) {
+					System.out.println("No real solution.");
+				}
+				else {
+				double x1 = (-numB + Math.sqrt (d))/(2 * numA);
+				double x2 = (-numB - Math.sqrt (d))/(2 * numA);
+				System.out.println("Root 1: "+x1);
+				System.out.println("Root 2: "+x2);
+				}
+				System.out.println ("End Program");
+				System.out.println ("");
 				break;
 			default:
-				System.err.println("Error");
+				System.err.println ("Error");
 				break;
 			}
 		}
@@ -65,12 +94,24 @@ public class Menu {
 		return numberA / numberB;
 	}
 	
+	public static double getQuadratic (int numA, int numB, int numC) {
+		return numA;
+	}
+	
+		public static int getDiscriminant (int x, int y, int z) {
+			int answer = 0;
+			answer = y*y-4*x*z;
+			return answer;
+	}
+
+	
 	private static void showMenuResult () {
 		System.out.println ("(0) Exit");
 		System.out.println ("(1) Addition");
 		System.out.println ("(2) Subtraction");
 		System.out.println ("(3) Multiplication");
 		System.out.println ("(4) Division");
+		System.out.println ("(5) Quadratic");
 	}
 	
 }
