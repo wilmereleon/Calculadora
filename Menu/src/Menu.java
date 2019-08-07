@@ -6,7 +6,7 @@ public class Menu {
 	public static void main (String[] args) {
 		Scanner mk = new Scanner (System.in); // «mk» is short for menu keyboard
 		double numberEnteredA, numberEnteredB;
-		int option, numA, numB, numC;
+		int option, numA, numB, numC, numberEnteredAL, numberEnteredBL;
 		while(true) {
 			showMenuResult ();
 			option = mk.nextInt();
@@ -80,11 +80,20 @@ public class Menu {
 				System.out.println ("");
 				break;
 			case 7:
-				System.out.println("Type the radicand: ");
+				System.out.println("Type the base: ");
 				numberEnteredA = mk.nextDouble();
-				System.out.println("Type the index: ");
+				System.out.println("Type the exponent: ");
 				numberEnteredB = mk.nextDouble();
 				System.out.println (getPow (numberEnteredA, numberEnteredB));
+				System.out.println ("«End Program»");
+				System.out.println ("");
+				break;
+			case 8:
+				System.out.println("Type the number: ");
+				numberEnteredAL = (int) mk.nextDouble();
+				System.out.println("Type the base: ");
+				numberEnteredBL = (int) mk.nextDouble();
+				System.out.println (getLog (numberEnteredAL, numberEnteredBL));
 				System.out.println ("«End Program»");
 				System.out.println ("");
 				break;
@@ -125,6 +134,10 @@ public class Menu {
 	public static double getPow (double numberA, double numberB) {
 		return Math.pow (numberA, numberB);
 	}
+	
+	private static double getLog (double numberA, int numberB) {
+	      return (Math.log10 (numberA) / Math.log10 (numberB));
+	}
 
 	private static void showMenuResult () {
 		System.out.println ("(0) Exit");
@@ -135,6 +148,7 @@ public class Menu {
 		System.out.println ("(5) Quadratic");
 		System.out.println ("(6) Root");
 		System.out.println ("(7) Pow");
+		System.out.println ("(8) Logarithm");
 	}
 	
 }
