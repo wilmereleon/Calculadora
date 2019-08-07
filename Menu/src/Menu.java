@@ -94,13 +94,9 @@ public class Menu {
 		return numberA / numberB;
 	}
 	
-	public static double getQuadratic (int numA, int numB, int numC) {
-		return numA;
-	}
-	
-		public static int getDiscriminant (int x, int y, int z) {
+		public static int getDiscriminant (int numA, int numB, int numC) {
 			int answer = 0;
-			answer = y*y-4*x*z;
+			answer = numB * numB - 4 * numA * numC;
 			return answer;
 	}
 
