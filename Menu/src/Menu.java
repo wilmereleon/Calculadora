@@ -20,6 +20,13 @@ public class Menu {
 				numberEnteredB = mk.nextDouble();
 				System.out.println (getAdd(numberEnteredA, numberEnteredB));
 				break;
+			case 2:
+				System.out.println("Type first number: ");
+				numberEnteredA = mk.nextDouble();
+				System.out.println("Type second number: ");
+				numberEnteredB = mk.nextDouble();
+				System.out.println (getSubtraction(numberEnteredA, numberEnteredB));
+				break;
 			default:
 				System.err.println("Error");
 				break;
@@ -32,9 +39,15 @@ public class Menu {
 		return numberA + numberB;
 	}
 	
+	public static double getSubtraction (double numberA, double numberB) {
+		return numberA - numberB;
+	}
+	
 	private static void showMenuResult () {
 		System.out.println ("(0) Exit");
 		System.out.println ("(1) Addition");
+		System.out.println ("(2) Subtraction");
 	}
+	
 }
 
