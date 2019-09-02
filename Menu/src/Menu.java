@@ -18,7 +18,7 @@ public class Menu {
 				numberEnteredA = mk.nextDouble();
 				System.out.println("Type second number: ");
 				numberEnteredB = mk.nextDouble();
-				System.out.println (getAdd (numberEnteredA, numberEnteredB));
+				System.out.println (numberEnteredA+" + "+numberEnteredB+" = "+getAdd (numberEnteredA, numberEnteredB));
 				System.out.println ("«End Program»");
 				System.out.println ("");
 				break;
@@ -27,7 +27,7 @@ public class Menu {
 				numberEnteredA = mk.nextDouble();
 				System.out.println("Type second number: ");
 				numberEnteredB = mk.nextDouble();
-				System.out.println (getSubtraction (numberEnteredA, numberEnteredB));
+				System.out.println (numberEnteredA+" - "+numberEnteredB+" = "+getSubtraction (numberEnteredA, numberEnteredB));
 				System.out.println ("«End Program»");
 				System.out.println ("");
 				break;
@@ -36,7 +36,7 @@ public class Menu {
 				numberEnteredA = mk.nextDouble();
 				System.out.println("Type second number: ");
 				numberEnteredB = mk.nextDouble();
-				System.out.println (getMultiplication (numberEnteredA, numberEnteredB));
+				System.out.println (numberEnteredA+" * "+numberEnteredB+" = "+getMultiplication (numberEnteredA, numberEnteredB));
 				System.out.println ("«End Program»");
 				System.out.println ("");
 				break;
@@ -45,7 +45,7 @@ public class Menu {
 				numberEnteredA = mk.nextDouble();
 				System.out.println("Type second number: ");
 				numberEnteredB = mk.nextDouble();
-				System.out.println (getDivision (numberEnteredA, numberEnteredB));
+				System.out.println (numberEnteredA+" / "+numberEnteredB+" = "+getDivision (numberEnteredA, numberEnteredB));
 				System.out.println ("«End Program»");
 				System.out.println ("");
 				break;
@@ -75,7 +75,7 @@ public class Menu {
 				numberEnteredA = mk.nextDouble();
 				System.out.println("Type the index: "); //In this line the value of the root index is entered.
 				numberEnteredB = mk.nextDouble();
-				System.out.println (getRoot (numberEnteredA, numberEnteredB)); 
+				System.out.println ("The Root of "+numberEnteredA+" is "+getRoot (numberEnteredA, numberEnteredB)); 
 				System.out.println ("«End Program»");
 				System.out.println ("");
 				break;
@@ -84,7 +84,7 @@ public class Menu {
 				numberEnteredA = mk.nextDouble();
 				System.out.println("Type the exponent: ");
 				numberEnteredB = mk.nextDouble();
-				System.out.println (getPow (numberEnteredA, numberEnteredB));
+				System.out.println ("The Pow of "+numberEnteredA+" is with exponent "+numberEnteredB+" is "+getPow (numberEnteredA, numberEnteredB));
 				System.out.println ("«End Program»");
 				System.out.println ("");
 				break;
@@ -93,7 +93,7 @@ public class Menu {
 				numberEnteredAL = (int) mk.nextDouble();
 				System.out.println("Type the base: ");
 				numberEnteredBL = (int) mk.nextDouble();
-				System.out.println (getLog (numberEnteredAL, numberEnteredBL));
+				System.out.println ("The Logarithm of "+numberEnteredAL+" with base "+numberEnteredBL+" is "+getLog (numberEnteredAL, numberEnteredBL));
 				System.out.println ("«End Program»");
 				System.out.println ("");
 				break;
