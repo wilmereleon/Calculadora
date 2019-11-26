@@ -59,14 +59,8 @@ public class Main extends Application{
 		button.setText("Empezar"); // Se cambie el botón "Iniciar" por "Empezar"
 		
 		
-		button.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				
-			}
-		}
-				
-	);	
+		button.setOnAction(e ->System.out.println("Poner evento para enviar a algunas de las clases"));	//En esta sección de direccione el enlace a la clase Despliegue de interfaz
+		//gráfica, que mostraría el primer escenario de 
 	
 		
 		StackPane layout = new StackPane ();
