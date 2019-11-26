@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
@@ -40,6 +41,12 @@ public class Main extends Application {
 		button = new Button();
 		button.setText("Iniciar");
 		
+		StackPane layout = new StackPane ();
+		layout.getChildren().add(button);
+		
+		Scene scene = new Scene(layout, 300, 250);
+		primaryStage.setScene(scene);
+		primaryStage.show();
 		
 	}
 }
