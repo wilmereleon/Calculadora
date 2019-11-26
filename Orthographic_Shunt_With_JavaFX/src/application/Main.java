@@ -14,16 +14,17 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
-public class Main extends Application implements EventHandler<ActionEvent>{
+public class Main extends Application{
 	
-	@Override
-	public void handle(ActionEvent event) {
-		if(event.getSource()==button) {
-		System.out.println("Escoja la respuesta correcta");	
-		}
+	//@Override
+	//public void handle(ActionEvent event) { // Se esqueletea el evento con el botón que redireccionara a otro estado del juegfo
+		//if(event.getSource()==button) {
+		//System.out.println("Escoja la respuesta correcta");	
+		//}
 		
-	}
+//	}
 	Button button;
+	
 	
 	
 	//@Override
@@ -52,16 +53,28 @@ public class Main extends Application implements EventHandler<ActionEvent>{
 		primaryStage.setTitle("Ortografía por derivación");
 		
 		button = new Button();
-		button.setText("Iniciar");
+		
+		
+		
+		button.setText("Empezar"); // Se cambie el botón "Iniciar" por "Empezar"
+		
+		
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				
+			}
+		}
+				
+	);	
 	
-		button.setOnAction(this);
 		
 		StackPane layout = new StackPane ();
 		layout.getChildren().add(button);
 		
-		Scene scene = new Scene(layout, 500, 350);
+		Scene scene = new Scene(layout, 500, 350); // Tamaño del entorno de despliegue de la ventana del juego
 		primaryStage.setScene(scene);
-		primaryStage.show();
+		primaryStage.show(); //Muestra el escenario
 		
 	}
 	
