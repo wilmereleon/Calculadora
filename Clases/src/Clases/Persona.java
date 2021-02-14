@@ -16,7 +16,7 @@ public void hablar (String mensaje) {
 	System.out.println(mensaje);
 }
 public void conducir(Vehiculo v) {
-	System.out.println("Soy " + nombre + " tengo " + edad +  " años, una altura de " + altura + " cm, un peso de " + peso + " kg y estoy conduciendo un " + v.getMarca ());
+	System.out.println("Soy " + nombre + " tengo " + edad +  " años, una altura de " + altura + " cm, un peso de " + peso + " kg y estoy conduciendo un " + v.getMarca () + " y su IMC es de " + obtenerIMC());
 }
 public float obtenerIMC () {
 	float alturaEnMetros = (float) altura / 100; // Almacena la conversión de metros a centímetros
@@ -24,4 +24,5 @@ public float obtenerIMC () {
 	double imc = peso / alturaEnMetrosCuadrado;
 	return (float) imc;
 }
+
 }
