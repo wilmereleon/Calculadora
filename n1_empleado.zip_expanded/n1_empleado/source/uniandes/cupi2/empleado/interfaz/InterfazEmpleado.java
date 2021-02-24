@@ -176,9 +176,15 @@ public class InterfazEmpleado extends JFrame
         {
             genero = "masculino";
         }
-        else
+        
+        else if( iGenero == 0 )
         {
             genero = "femenino";
+        }
+        
+        else
+        {
+            genero = "intersexual"; // Se añade tercera opción de género
         }
 
         fechaI = empleado.darFechaIngreso( );
@@ -198,7 +204,7 @@ public class InterfazEmpleado extends JFrame
      * Cambia los datos del empleado.
      * @param pNombre Nuevo nombre del empleado. pNombre != "" && pNombre != null.
      * @param pApellido Nuevo apellido del empleado. pApellido != "" && pApellido != null.
-     * @param pGenero Nuevo género del empleado. pGenero == 1 && pGenero == 0.
+     * @param pGenero Nuevo género del empleado. pGenero == 1 && pGenero == 0 && (pGenero == 2). () Añadido recientemente 
      * @param pFechaNacimiento Nueva fecha de nacimiento del empleado. pFechaNacimiento != null.
      * @param pFechaIngreso Nueva fecha de ingreso. pFechaIngreso != null.
      * @param pSalario Nuevo salario del empleado. pSalario > 0.

@@ -148,6 +148,7 @@ public class DialogoCambiarEmpleado extends JDialog implements ActionListener
         cbGenero = new JComboBox( );
         cbGenero.addItem( "femenino" );
         cbGenero.addItem( "masculino" );
+        cbGenero.addItem( "intersexual" ); // Se añade tercera opción en el panel
         add( cbGenero );
 
         add( new JLabel( "Fecha de nacimiento:" ) );
