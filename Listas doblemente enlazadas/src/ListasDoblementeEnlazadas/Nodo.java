@@ -2,14 +2,18 @@ package ListasDoblementeEnlazadas;
 
 public class Nodo {
 	public int dato;
-	Nodo siguiente;
-	Nodo anterior;
+	Nodo punteroAnterior;
+	Nodo punteroSiguiente;
+	
+	// Constructor sin nodos:
 	public Nodo (int x) {
-		this (x, null, null); // Recibe los datos del constructor con 3 parametros de entradas (x, an y sg)
+		this (x, null, null); // Recibe los datos del constructor con 3 parámetros de entradas (x, an y sg); this asegura uso de constructor Nodo
 	}
-	public Nodo (int x, Nodo an, Nodo sg) {
+	
+	// Constructor para recibir tres parámetros:
+	public Nodo (int x, Nodo an, Nodo sg) { // «x» es el elemento que recibe la información; «an» y «sg», los que recibe elemento anterios y posterior
 		dato = x;
-		anterior = an;
-		siguiente = sg;
+		punteroAnterior = an;
+		punteroSiguiente = sg;
 	}
 }
