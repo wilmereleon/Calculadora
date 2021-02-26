@@ -11,7 +11,7 @@ public class Lista {
 		cola = null;
 	}
 	
-	public void agregarALaCola (int x) { // Agrega nodos al final de la lista
+	public void agregarALaCola (String x) { // Agrega nodos al final de la lista
 		if (!verificarListaVacia()) { // Verifica si el método verificarListaVacia está efectivamente vacía (!: símbolo para verificar métodos).
 			cola = new Nodo (x, cola, null); // Recibe datos del constructor de 3 parámetros: «x», cola apunta a null, y cabeza va a cola.
 			/* Recibe la nueva asignación de «cola» que viene del constructor; pasa de punteroAnterior a punteroSiguiente;
@@ -26,7 +26,7 @@ public class Lista {
 	}
 	
 	
-	public void agregarALaCabeza (int x) { // Agrega nodos al inicio de la lista
+	public void agregarALaCabeza (String x) { // Agrega nodos al inicio de la lista
 		if (!verificarListaVacia ()) { // Verifica si el método verificarListaVacia está efectivamente vacía (!: símbolo para verificar métodos).
 			cabeza = new Nodo (x, null, cabeza); // Recibe datos del constructor de 3 parámetros: «x», cabeza apunta a null, y cola va a cabeza.
 			/* Recibe la nueva asignación de «cola» que viene del constructor; pasa de punteroAnterior a punteroSiguiente;
@@ -68,4 +68,6 @@ public class Lista {
 	public boolean verificarListaVacia () { // Verifica si la lista está vacía
 		return (cabeza == null); // Solop se necesita verificar uno de los estados para estimar si la lista está acia; se usa la cabeza
 	}
+
+	
 }
