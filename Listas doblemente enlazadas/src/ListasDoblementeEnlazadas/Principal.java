@@ -1,27 +1,44 @@
 package ListasDoblementeEnlazadas;
 
+import javax.swing.JOptionPane;
+
 public class Principal {
-	private Nodo cabeza;
-	private Nodo cola;
-	
-	public Principal () { // Se inician los nodos de cabeza y cola apuntando a null para asegurar que se reconozca el inicio y el final de la lista
-		cabeza = null;
-		cola = null;
-	}
-	
-	public void agregarALaCola (int x) { // Agrega nodos al final de la lista
-		if (!verificarListaVacia()) { // Verifica si el método verificarListaVacia está efectivamente vacía (!: símbolo para verificar métodos)
-			cola = new Nodo (x, cola, null); // Recibe datos del constructor de 3 parámetros: «x», cola paunta a null, y cabeza va a cola
-			cola.punteroAnterior.punteroSiguiente = cola;
+	public static void main (String [] args) {
+		Lista list = new Lista ();
+		int opcion = 0, x;
+		do {
+			try {
+				opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
+						"1. Agregar un dato a la cabeza"
+						+ "\n2. Mostrar los datos de la lista"
+						+ "\n3. Salir", "Menú"));
+			switch (opcion)	{
+				case 1:
+					try {
+						x = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingresa el dato", "Inserta nodo al inicio", 3));
+						list.agregarALaCabeza(x);
+					}
+					catch (NumberFormatException n) {
+						JOptionPane.showMessageDialog(null, "Error" + n.getMessage());
+					}
+					break;
+				case 2:
+					list.mostrarListaDeCabezaACola();
+					break;
+				case 3:
+					break;
+				default:
+					JOptionPane.showMessageDialog(null, "Opción incorrecta");
+			}
+			
+			
+					
+			}
+			catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Error" + e.getMessage());
+			}
 		}
-		else { // De no cumplirse la sentencia anterior, va al constructor vacío
-			cabeza = new Nodo (x);
-			cola = new Nodo (x);
-		}
+		while (opcion != 3);
 	}
-	
-	
-	public boolean verificarListaVacia () { // Verifica si la lista está vacía
-		return (cabeza == null); // Solop se necesita verificar uno de los estados para estimar si la lista está acia; se usa la cabeza
-	}
+
 }
