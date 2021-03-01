@@ -2,8 +2,8 @@ package ListasDoblementeEnlazadas;
 
 public class Nodo {
 	public String dato;
-	Nodo punteroAnterior;
 	Nodo punteroSiguiente;
+	Nodo punteroAnterior;
 	
 	// Constructor sin nodos:
 	public Nodo (String x) {
@@ -11,9 +11,9 @@ public class Nodo {
 	}
 	
 	// Constructor para recibir tres parámetros:
-	public Nodo (String x, Nodo an, Nodo sg) { // «x» es el elemento que recibe la información; «an» y «sg», los que recibe elemento anterios y posterior
+	public Nodo (String x, Nodo sg, Nodo an) { // «x» es el elemento que recibe la información; «an» y «sg», los que recibe elemento anterios y posterior
 		dato = x;
-		punteroAnterior = an;
 		punteroSiguiente = sg;
+		punteroAnterior = an;
 	}
 }
