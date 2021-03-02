@@ -79,29 +79,29 @@ public class Lista {
 		
 	}
 	
-	public String borrarElementoInicial () {
-		String almacenado = cola.dato;
-		if (cabeza == cola) {
+	public String borrarElementoInicial () { // Borra el elemento almacenado al incio de la lista
+		String almacenado = cola.dato; // Se lamacena el dato de la cola en un String almacenado
+		if (cabeza == cola) { // Se condiciona cabeza = cola; si son iguales, se borra el único elemento existente o no se ejecuta el método si está vacío
 			cabeza = null;
 			cola = null;
 			
 		}
 		else {
-			cola = cola.punteroAnterior;
-			cola.punteroSiguiente = null;
+			cola = cola.punteroAnterior; // De lo contrario, la cola apunta al puntero anterior para verificación
+			cola.punteroSiguiente = null; // El puntero
 		}
 		return almacenado;
 	}
-	
-	public void mostrarElementos () {
+	/*
+	public void mostrarElementos () { // Comprobación de datos almacenados opr consola en frío
 		Nodo avanzar = cabeza;
 		System.out.println("");
 		while (avanzar != null) {
-			System.out.print("[" + avanzar.dato + "]...");
+			System.out.print("<" + avanzar.dato + ">...");
 			avanzar = avanzar.punteroSiguiente;
 		}
 	}
-	
+	*/
 	public boolean verificarListaVacia () { // Verifica si la lista está vacía
 		return (cabeza == null); // Solop se necesita verificar uno de los estados para estimar si la lista está acia; se usa la cabeza
 	}
@@ -110,4 +110,32 @@ public class Lista {
 		String contadorString = Integer.toString(contador);
 		return contadorString;
 	}
+	
+	public void borrarElementoEsp (String x) { // Borra un dato especídifo de los ingresados
+		if(!verificarListaVacia ()){ // 
+			if(cabeza == cola && x == cabeza.dato) {
+				cabeza = cola = null;
+			}
+			else if (x == cabeza.dato) {
+				cabeza = cabeza.punteroSiguiente;
+			}
+			else {
+				Nodo previo, temporal;
+				previo = cabeza;
+				temporal = cabeza.punteroSiguiente;
+				while (temporal != null && temporal.dato != x) {
+					previo = previo.punteroSiguiente;
+					temporal = temporal.punteroSiguiente;
+				}
+				if (temporal != null) {
+					previo.punteroSiguiente = temporal.punteroSiguiente;
+					if(temporal == cola) {
+						cola = previo;
+					}
+				}
+			}
+		}
+	}
+
+	
 }

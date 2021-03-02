@@ -24,7 +24,8 @@ public class Principal {
 						+ "\n5. Borrar dato de la cabeza"
 						+ "\n6. Borrar dato de la cola"
 						+ "\n7. Cantidad de elementos en la lista"
-						+ "\n8. Salir", "Ingrese una de las opciones", JOptionPane.INFORMATION_MESSAGE));
+						+ "\n8. Eliminar elemento específico"
+						+ "\n9. Salir", "Ingrese una de las opciones", JOptionPane.INFORMATION_MESSAGE));
 			switch (opcion)	{
 				case "1":
 					try {
@@ -88,6 +89,11 @@ public class Principal {
 					}
 					break;
 				case "8":
+					x = JOptionPane.showInputDialog(null,  "Ingresa el dato que se quiere eliminar", "Eliminar dato específico", JOptionPane.INFORMATION_MESSAGE);
+					list.borrarElementoEsp(x);
+					JOptionPane.showMessageDialog(null, "El elemento eliminado es: ", "Eliminar noda específico", JOptionPane.INFORMATION_MESSAGE);
+					break;
+				case "9":
 					JOptionPane.showMessageDialog(null, "Finalización", "Final", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				default:
