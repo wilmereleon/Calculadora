@@ -14,6 +14,7 @@ public class Principal {
 		Lista list = new Lista ();
 		String opcion = " ";
 		String x;
+		int pos = 0;
 		do {
 			try {
 				opcion = (JOptionPane.showInputDialog(null,
@@ -25,12 +26,14 @@ public class Principal {
 						+ "\n6. Borrar dato de la cola"
 						+ "\n7. Cantidad de elementos en la lista"
 						+ "\n8. Eliminar elemento específico"
-						+ "\n9. Salir", "Ingrese una de las opciones", JOptionPane.INFORMATION_MESSAGE));
+						+ "\n9. Buscar elemento en la lista"
+						+ "\n10. Salir", "Ingrese una de las opciones", JOptionPane.INFORMATION_MESSAGE));
 			switch (opcion)	{
 				case "1":
 					try {
 						x = (JOptionPane.showInputDialog(null, "Ingresa el dato", "Inserta nodo al inicio", JOptionPane.INFORMATION_MESSAGE));
-						list.agregarALaCabeza(x);
+						list.agregarALaCabeza(x, pos);
+						pos++;
 					}
 					catch (NumberFormatException n) {
 						JOptionPane.showMessageDialog(null, "Error" + n.getMessage());
@@ -89,11 +92,28 @@ public class Principal {
 					}
 					break;
 				case "8":
-					x = JOptionPane.showInputDialog(null,  "Ingresa el dato que se quiere eliminar", "Eliminar dato específico", JOptionPane.INFORMATION_MESSAGE);
-					list.borrarElementoEsp(x);
-					JOptionPane.showMessageDialog(null, "El elemento eliminado es: ", "Eliminar noda específico", JOptionPane.INFORMATION_MESSAGE);
+					try {
+						x = (JOptionPane.showInputDialog(null, "Ingresa el dato que se quiere eliminar", "Eliminar dato específico", JOptionPane.INFORMATION_MESSAGE));
+						list.borrarElementoEsp(x);
+					}
+					catch (NumberFormatException n) {
+						JOptionPane.showMessageDialog(null, "Error" + n.getMessage());
+					}
+					JOptionPane.showMessageDialog(null, "El elemento eliminado es: ", "Eliminar dato específico", JOptionPane.INFORMATION_MESSAGE);
+					
 					break;
 				case "9":
+					x = (JOptionPane.showInputDialog(null, "Ingresa el dato que se quiere buscar", "Buscar dato en la lista", JOptionPane.INFORMATION_MESSAGE));
+					list.buscarElemento(x);
+					if(list.buscarElemento(x) == true) {
+						JOptionPane.showMessageDialog(null, "El elemento " + x + " está en la lista", "Dato encontrado", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "El elemento " + x + " no está en la lista", "Dato no encontrado", JOptionPane.INFORMATION_MESSAGE);
+					}
+					
+					break;
+				case "10":
 					JOptionPane.showMessageDialog(null, "Finalización", "Final", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				default:
@@ -106,7 +126,7 @@ public class Principal {
 				JOptionPane.showMessageDialog(null, "Error" + e.getMessage());
 			}
 		}
-		while (!opcion.equalsIgnoreCase("8"));
+		while (!opcion.equalsIgnoreCase("10"));
 	}
 
 }

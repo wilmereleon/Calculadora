@@ -6,6 +6,7 @@ public class Lista {
 	private Nodo cabeza;
 	private Nodo cola;
 	int contador = 0;
+	int contadorPuntero = 0;
 	
 	public Lista () { // Se inician los nodos de cabeza y cola apuntando a null para asegurar que se reconozca el inicio y el final de la lista.
 		cabeza = null;
@@ -18,16 +19,19 @@ public class Lista {
 			/* Recibe la nueva asignación de «cola» que viene del constructor; pasa de punteroAnterior a punteroSiguiente;
 			 esto garantiza el desplazamiento de los datos:
 			*/
-			cola.punteroAnterior.punteroSiguiente = cola; 
+			cola.punteroAnterior.punteroSiguiente = cola;
+			
 		}
 		else { // De no cumplirse la sentencia anterior, va al constructor vacío
 			cola = cabeza = new Nodo (x);
+			contadorPuntero++;
 		}
 	}
 	
 	
-	public void agregarALaCabeza (String x) { // Agrega nodos al inicio de la lista
+	public void agregarALaCabeza (String x, int contadorPuntero) { // Agrega nodos al inicio de la lista
 		contador++;
+		
 		if (!verificarListaVacia ()) { // Verifica si el método verificarListaVacia está efectivamente vacía (!: símbolo para verificar métodos).
 			cabeza = new Nodo (x, cabeza, null); // Recibe datos del constructor de 3 parámetros: «x», cabeza apunta a null, y cola va a cabeza.
 			/* Recibe la nueva asignación de «cola» que viene del constructor; pasa de punteroAnterior a punteroSiguiente;
@@ -37,7 +41,9 @@ public class Lista {
 		}
 		else { // De no cumplirse la sentencia anterior, va al constructor vacío
 			cabeza = cola = new Nodo (x);
+			contadorPuntero++;
 		}
+		
 	}
 	
 	public void mostrarListaDeColaACabeza () { // Muestra la lista de cabeza a cola
@@ -45,7 +51,7 @@ public class Lista {
 			String y = "<...>";
 			Nodo aux = cabeza;
 			while (aux != null) {
-				y = y + "[" + aux.dato + "] <...>";
+				y = y + "<"+ contadorPuntero + "|" + aux.dato + "|" + contadorPuntero +"> <...>";
 				aux = aux.punteroSiguiente;
 			}
 			JOptionPane.showMessageDialog(null, y, "Lista de la cabeza a la cola: ", JOptionPane.INFORMATION_MESSAGE);
@@ -57,7 +63,7 @@ public class Lista {
 			String y = "...";
 			Nodo aux = cola;
 			while (aux != null) {
-				y = y + "[" + aux.dato + "] ...";
+				y = y + "<"+ contadorPuntero + "|" + aux.dato + "|" + contadorPuntero +"> <...>";
 				aux = aux.punteroAnterior;
 			}
 			JOptionPane.showMessageDialog(null, y, "Lista de la cola a la cabeza: ", JOptionPane.INFORMATION_MESSAGE);
@@ -103,7 +109,7 @@ public class Lista {
 	}
 	*/
 	public boolean verificarListaVacia () { // Verifica si la lista está vacía
-		return (cabeza == null); // Solop se necesita verificar uno de los estados para estimar si la lista está acia; se usa la cabeza
+		return (cabeza == null); // Solo se necesita verificar uno de los estados para estimar si la lista está acia; se usa la cabeza
 	}
 
 	public String contarElementos () { // por medio del contador en el método de agregarALaCabeza se lleva el conteo de los datos ingresados
@@ -111,31 +117,42 @@ public class Lista {
 		return contadorString;
 	}
 	
-	public void borrarElementoEsp (String x) { // Borra un dato especídifo de los ingresados
+	public String borrarElementoEsp (String parametroX) { // Borra un dato especídifo de los ingresados
+		String x = "";
 		if(!verificarListaVacia ()){ // 
 			if(cabeza == cola && x == cabeza.dato) {
-				cabeza = cola = null;
+				cabeza = null;
+				cola = null;
 			}
-			else if (x == cabeza.dato) {
-				cabeza = cabeza.punteroSiguiente;
+			else if (x == cabeza.dato) { //Condición para mínimo dos datos ingresados para evaluación
+				cabeza = cabeza.punteroSiguiente; // Apunta al siguiente, desde un dato ingresado
 			}
 			else {
-				Nodo previo, temporal;
-				previo = cabeza;
-				temporal = cabeza.punteroSiguiente;
-				while (temporal != null && temporal.dato != x) {
+				Nodo previo;
+				Nodo temporal;
+				previo = cabeza; // Se almacena contenido de variable «previo» en la cabeza, en el objecto «Nodo»
+				temporal = cabeza.punteroSiguiente; // Se almacena contenido de variable «temporal» apuntando hacia el siguiente nodo, en el objecto «Nodo»
+				while (temporal != null && temporal.dato != x) { // Recorre la lista siguiendo la restricción que temporal sea diferente a un nodo vacío y el dato temporal sea diferente del dato ingresado
 					previo = previo.punteroSiguiente;
 					temporal = temporal.punteroSiguiente;
 				}
-				if (temporal != null) {
-					previo.punteroSiguiente = temporal.punteroSiguiente;
+				if (temporal != null) { // Si hay dato almacenado...
+					previo.punteroSiguiente = temporal.punteroSiguiente; // El dato en el nodo anterior asume posición de dato siguinete en «temporal»
 					if(temporal == cola) {
-						cola = previo;
+						cola = previo; // Se mueve el dato que se quiere borrar al temporal
 					}
 				}
 			}
 		}
+		return x;	
 	}
-
+	
+	public boolean buscarElemento (String x) {
+		Nodo temporal = cabeza;
+		while (temporal != null && temporal.dato != x) {
+			temporal = temporal.punteroSiguiente;
+		}
+		return temporal != null;
+	}
 	
 }
