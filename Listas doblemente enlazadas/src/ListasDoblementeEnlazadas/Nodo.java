@@ -16,4 +16,5 @@ public class Nodo {
 		punteroSiguiente = sg;
 		punteroAnterior = an;
 	}
+	
 }

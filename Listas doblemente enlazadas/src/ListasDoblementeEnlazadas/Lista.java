@@ -14,56 +14,63 @@ public class Lista {
 	}
 	
 	public void agregarALaCola (String x) { // Agrega nodos al final de la lista
+		contador++;
+		contadorPuntero++;
 		if (!verificarListaVacia()) { // Verifica si el método verificarListaVacia está efectivamente vacía (!: símbolo para verificar métodos).
 			cola = new Nodo (x, null, cola); // Recibe datos del constructor de 3 parámetros: «x», cola apunta a null, y cabeza va a cola.
 			/* Recibe la nueva asignación de «cola» que viene del constructor; pasa de punteroAnterior a punteroSiguiente;
 			 esto garantiza el desplazamiento de los datos:
 			*/
 			cola.punteroAnterior.punteroSiguiente = cola;
-			
 		}
 		else { // De no cumplirse la sentencia anterior, va al constructor vacío
 			cola = cabeza = new Nodo (x);
-			contadorPuntero++;
 		}
 	}
 	
-	
-	public void agregarALaCabeza (String x, int contadorPuntero) { // Agrega nodos al inicio de la lista
-		contador++;
+	public String mostrarPosicion(String x, int pos) {
+		contadorPuntero = pos;
+		pos++;
+		return x + pos;
 		
+		
+	}
+	/*
+	public void agregarALaCabeza (String x, int contadorPuntero) { // Agrega nodos al inicio de la lista
+		
+		contadorPuntero++;
 		if (!verificarListaVacia ()) { // Verifica si el método verificarListaVacia está efectivamente vacía (!: símbolo para verificar métodos).
 			cabeza = new Nodo (x, cabeza, null); // Recibe datos del constructor de 3 parámetros: «x», cabeza apunta a null, y cola va a cabeza.
-			/* Recibe la nueva asignación de «cola» que viene del constructor; pasa de punteroAnterior a punteroSiguiente;
-			 esto garantiza el desplazamiento de los datos:
-			*/
+			// Recibe la nueva asignación de «cola» que viene del constructor; pasa de punteroAnterior a punteroSiguiente;
+			// esto garantiza el desplazamiento de los datos:
+			
 			cabeza.punteroSiguiente.punteroAnterior = cabeza; 
 		}
 		else { // De no cumplirse la sentencia anterior, va al constructor vacío
 			cabeza = cola = new Nodo (x);
-			contadorPuntero++;
 		}
 		
 	}
-	
-	public void mostrarListaDeColaACabeza () { // Muestra la lista de cabeza a cola
+	*/
+	public void mostrarListaDeCabezaACola () { // Muestra la lista de cabeza a cola
 		if(!verificarListaVacia ()) {
-			String y = "<...>";
+			String y = "| null |<──>";
+			String z = "<──>";
 			Nodo aux = cabeza;
 			while (aux != null) {
-				y = y + "<"+ contadorPuntero + "|" + aux.dato + "|" + contadorPuntero +"> <...>";
+				y = y + " |"+ contadorPuntero + "| " + aux.dato + " |" + contadorPuntero +"|" + z;
 				aux = aux.punteroSiguiente;
 			}
 			JOptionPane.showMessageDialog(null, y, "Lista de la cabeza a la cola: ", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	
-	public void mostrarListaDeCabezaACola () { // Muestra la lista de cola a cabeza
+	public void mostrarListaDeColaACabeza () { // Muestra la lista de cola a cabeza
 		if(!verificarListaVacia ()) {
 			String y = "...";
 			Nodo aux = cola;
 			while (aux != null) {
-				y = y + "<"+ contadorPuntero + "|" + aux.dato + "|" + contadorPuntero +"> <...>";
+				y = y + "<"+ contadorPuntero + "|" + aux.dato + "|" + contadorPuntero +"> ---->";
 				aux = aux.punteroAnterior;
 			}
 			JOptionPane.showMessageDialog(null, y, "Lista de la cola a la cabeza: ", JOptionPane.INFORMATION_MESSAGE);
