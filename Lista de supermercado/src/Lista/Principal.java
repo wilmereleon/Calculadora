@@ -44,13 +44,22 @@ public class Principal extends Applet {
 			paneles [j] = new Panel ();
 			add(paneles [j]);
 			paneles[j].setForeground(Color.blue);
-			titulo[j].setBackground(Color.blue);
-			titulo[j].setBackground(Color.blue);
-			paneles[j].setForeground(Color.blue);
-			paneles[j].setForeground(Color.blue);
-			paneles[j].setForeground(Color.blue);
+			paneles[j].setForeground(Color.green);
+			titulo[j].setBackground(Color.green);
+			titulo[j].setEditable(false);
+			paneles[j].add(titulo[j]);
+			paneles[j].setLayout(new GridLayout(6, 1, 15, 20));
+			
 		}
-		
-		
+		paneles [2].setLayout(new GridLayout (2, 1));
+		paneles [1].setBackground(Color.yellow);
+		for (int j = 0; j < 4; j++) {
+			numeros [j] = new TextField ("Número " + (j + 1));
+			paneles [0].add(numeros [j]);
+		}
+		paneles [1].add(lista);
+		lista.setVisible(false);
+		paneles [0].add(inserteUno);
+		inserteUno.setEditable(false);
 	}
 }
