@@ -24,14 +24,14 @@ public class Principal extends Applet {
 		/*
 		 * Se crea el método «asigna_siguiente» que recibe un parámetro de tipo «lista».
 		 */
-		public void asigna_siguiente (lista nodos) { 
+		public void asignaSiguiente (lista nodos) { 
 			siguiente = nodos; // Se asigna la variable «nodos» al objeto «siguiente».'
 		}
 		
 		/*
 		 * Se crea un método para imprimir los datos de la lista.
 		 */
-		public void imprime_nodo () {
+		public void imprimeNodo () {
 			System.out.println ("Posición = " + posicion + "Producto = " + producto);
 		}
 		
@@ -46,22 +46,29 @@ public class Principal extends Applet {
 		/*
 		 * Se crea constructor que retorna posición.
 		 */
-		public Integer retorna_posicion () {
+		public Integer retornaPosicion () {
 			return posicion;
 		}
 		
 		/*
 		 * Se crea método que recibe posición.
 		 */
-		public void recibe_posicion (int pos) {
+		public void recibePosicion (int pos) {
 			posicion = new Integer (pos);
 		}
 		
 		/*
 		 * Se crea método que recibe producto.
 		 */
-		public void recibe_producto (String pro) {
+		public void recibeProducto (String pro) {
 			producto = pro;
+		}
+		
+		/*
+		 * Se crea avance en la lista.
+		 */
+		public lista retornaSiguiente () {
+			return siguiente;
 		}
 	}
 	  
