@@ -162,4 +162,30 @@ public class Lista {
 		return temporal != null;
 	}
 	
+	public void reemplazarElementoEsp (String x) {
+		if (!verificarListaVacia ()) {
+			if (cabeza == cola && x == cabeza.dato) {
+				cabeza = cola = null;
+			}
+			else if (x == cabeza.dato) {
+				cabeza = cabeza.punteroSiguiente;
+			}
+			else {
+				Nodo previo;
+				Nodo temporal;
+				previo = cabeza;
+				temporal = cabeza.punteroSiguiente;
+				while (temporal != null && temporal.dato != x) {
+					previo = previo.punteroSiguiente;
+					temporal = temporal.punteroSiguiente;
+				}
+				if (temporal != null) {
+					previo.punteroSiguiente = temporal.punteroSiguiente;
+					if (temporal == cola) {
+						cola = previo;
+					}
+				}
+			}
+		}
+	}
 }

@@ -39,14 +39,6 @@ public class Principal {
 					}
 					break;
 				case "2":
-					try {
-						x = (JOptionPane.showInputDialog(null, "Ingresa el dato que se quiere eliminar", "Eliminar dato específico", JOptionPane.INFORMATION_MESSAGE));
-						list.borrarElementoEsp(x);
-					}
-					catch (NumberFormatException n) {
-						JOptionPane.showMessageDialog(null, "Error" + n.getMessage());
-					}
-					JOptionPane.showMessageDialog(null, "El elemento eliminado es: ", "Eliminar dato específico", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				case "3":
 					x = (JOptionPane.showInputDialog(null, "Ingresa el dato que se quiere buscar", "Buscar dato en la lista", JOptionPane.INFORMATION_MESSAGE));
@@ -75,6 +67,14 @@ public class Principal {
 					}
 					break;
 				case "6":
+					try {
+						x = (JOptionPane.showInputDialog(null, "Ingresa el dato que se quiere eliminar", "Eliminar dato específico", JOptionPane.INFORMATION_MESSAGE));
+						list.borrarElementoEsp(x);
+					}
+					catch (NumberFormatException n) {
+						JOptionPane.showMessageDialog(null, "Error" + n.getMessage());
+					}
+					JOptionPane.showMessageDialog(null, "El elemento eliminado es: ", "Eliminar dato específico", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				case "7":
 					x = list.mostrarPosicion(x,pos);
