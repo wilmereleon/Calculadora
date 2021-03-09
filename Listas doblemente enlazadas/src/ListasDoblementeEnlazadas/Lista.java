@@ -28,7 +28,10 @@ public class Lista {
 		}
 	}
 	
-	public String mostrarPosicion(String x, int pos) {
+	public String mostrarPosicion(String x, int pos) { // Imprime el valor del incremento que da lugar a la posición y el elemento
+		for(int i = 0; i < 5; i ++) {
+			contadorPuntero ++;
+		}
 		contadorPuntero = pos;
 		pos++;
 		return x + pos;
@@ -53,12 +56,13 @@ public class Lista {
 	}
 	*/
 	public void mostrarListaDeCabezaACola () { // Muestra la lista de cabeza a cola
+		
 		if(!verificarListaVacia ()) {
-			String y = "| null |<──>";
-			String z = "<──>";
+			String y = "♦";
 			Nodo aux = cabeza;
+			
 			while (aux != null) {
-				y = y + " |"+ contadorPuntero + "| " + aux.dato + " |" + contadorPuntero +"|" + z;
+				y = y + contadorPuntero + ". " + aux.dato + ", ";
 				aux = aux.punteroSiguiente;
 			}
 			JOptionPane.showMessageDialog(null, y, "Lista de la cabeza a la cola: ", JOptionPane.INFORMATION_MESSAGE);
@@ -77,7 +81,7 @@ public class Lista {
 		}
 	}
 	
-	public String borrarElementoFinal () {
+	public String borrarElementoFinal () { // Método para borrar el último elemento en la lista
 		String almacenado = cabeza.dato;
 		if (cabeza == cola) {
 			cabeza = null;
@@ -86,7 +90,7 @@ public class Lista {
 		}
 		else {
 			cabeza = cabeza.punteroSiguiente;
-			cabeza.punteroAnterior = null;
+			cabeza.punteroAnterior = null; // dirección cabeza <--- nodo anterior.
 		}
 		return almacenado;
 		
@@ -106,7 +110,7 @@ public class Lista {
 		return almacenado;
 	}
 	/*
-	public void mostrarElementos () { // Comprobación de datos almacenados opr consola en frío
+	public void mostrarElementos () { // Comprobación de datos almacenados por consola en frío
 		Nodo avanzar = cabeza;
 		System.out.println("");
 		while (avanzar != null) {
@@ -119,13 +123,13 @@ public class Lista {
 		return (cabeza == null); // Solo se necesita verificar uno de los estados para estimar si la lista está acia; se usa la cabeza
 	}
 
-	public String contarElementos () { // por medio del contador en el método de agregarALaCabeza se lleva el conteo de los datos ingresados
+	public String contarElementos () { // Por medio del contador en el método de agregarALaCabeza se lleva el conteo de los datos ingresados
 		String contadorString = Integer.toString(contador);
 		return contadorString;
 	}
 	
-	public String borrarElementoEsp (String parametroX) { // Borra un dato especídifo de los ingresados
-		String x = "";
+	public String borrarElementoEsp (String x) { // Borra un dato especídifo de los ingresados
+		//String x = "";
 		if(!verificarListaVacia ()){ // 
 			if(cabeza == cola && x == cabeza.dato) {
 				cabeza = null;

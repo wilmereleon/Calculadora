@@ -10,6 +10,42 @@ import java.awt.event.*;
  * 
  */
 public class Principal extends Applet {
+	class lista {
+		Integer posicion = null;
+		String producto = null;
+		lista siguiente = null;
+		
+		String registro;
+		
+		public int retornaPosicion () {
+			return posicion.intValue();
+		}
+		
+		public void asignaSiguiente (lista nodos) {
+			siguiente = nodos;
+		}
+		
+		public void imprimeNodo () {
+			System.out.println("Posicion: "+ posicion + "producto" + producto);
+		}
+		
+		public String contenido () {
+			registro = new String ("Posicion: "+ posicion + "producto" + producto + "\n");
+			return registro;
+		}
+		
+		public void recibePosicion (int pos) {
+			posicion = new Integer(pos);
+		}
+		
+		public void recibeProducto (String pro) {
+			producto = pro;
+		}
+		
+		public lista retornaSiguiente () {
+			return siguiente;
+		}
+	}
 	Nodo raiz, itera, nuevo, unionUno, unionDos;
 	Panel paneles [] = new Panel [3]; // Se crea un arreglo para los paneles con 4 elementos.
 	Panel panelDos = new Panel ();
@@ -59,7 +95,90 @@ public class Principal extends Applet {
 		}
 		paneles [1].add(lista);
 		lista.setVisible(false);
-		paneles [0].add(inserteUno);
+		paneles [1].add(inserteUno);
 		inserteUno.setEditable(false);
+		paneles [1].add(inserteDos);
+		
+		inserteUno.setVisible(false);
+		inserteDos.setVisible(false);
+		
+		botones [0].addActionListener(new crear());
+		
+		for (int j = 0; j < 2; j++) {
+			paneles [j].add(botones[j]);
+		}
+		botones [1].setVisible(false);
+		botones [1].addActionListener(new insertar());
+		paneles [2].add(listaPeque);
+		listaPeque.setVisible(false);
+	}
+	class crear implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (creada == 0) {
+				for (int k = 0; k < 4; k++) {
+					lista.add((numeros [k].getText ()).trim());
+					System.out.println("Luis ");
+					numeros [k].setEditable(false);
+				}
+				paneles [1].add(lista);
+				creada = 1;
+				inserteUno.setVisible(true);
+				inserteDos.setVisible(true);
+				botones [1].setVisible(true);
+				botones [0].setVisible(false);
+				lista.setVisible(true);
+				
+				for (int l = 0; l < 4; l++) {
+					if (l == 0) {
+						raiz = new Nodo (l + 1, numeros [l].getText().trim());
+						itera = raiz;
+					}
+					else {
+						nuevo = new Nodo (l + 1, numeros [l].getText().trim());
+						itera.siguiente = nuevo;
+						itera = nuevo;
+					}
+				}
+			}
+		}
+	}
+	class insertar implements ActionListener {
+		public void actionPerformed (ActionEvent e) {
+			botones [1].setVisible(false);
+			botones [2].setVisible(true);
+			inserteDos.setEditable(false);
+			listaPeque.setVisible(true);
+			int seleccion = lista.getSelectedIndex() + 1;
+			
+			itera = raiz;
+			unionUno = raiz;
+			unionDos = raiz.siguiente;
+			while (itera != null) {
+				if (itera.posicion == seleccion) {
+					unionUno = itera;
+					unionDos = itera.siguiente;
+					nuevo = new Nodo(5, (inserteDos.getText()).trim());
+				unionUno.siguiente = nuevo;
+				nuevo.siguiente = unionDos;
+					itera = itera.siguiente;
+					unionUno = itera;
+					unionDos = itera.siguiente;
+					System.out.println("dentrob" + itera.posicion);
+				}
+				System.out.println("fuera" + itera.posicion);
+				itera = itera.siguiente;
+			}
+			imprime ();
+		}
+		
+	}
+	public void imprime () {
+		itera = raiz;
+		int y = 1;
+		while (itera != null) {
+			listaPeque.add("" + itera.posicion + "" + itera.producto);
+			itera = itera.siguiente;
+			y++;
+		}
 	}
 }

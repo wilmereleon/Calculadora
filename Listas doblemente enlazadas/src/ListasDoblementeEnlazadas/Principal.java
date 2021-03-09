@@ -39,6 +39,8 @@ public class Principal {
 					}
 					break;
 				case "2":
+					//pos++;
+					list.mostrarPosicion(x, pos);
 					break;
 				case "3":
 					x = (JOptionPane.showInputDialog(null, "Ingresa el dato que se quiere buscar", "Buscar dato en la lista", JOptionPane.INFORMATION_MESSAGE));
@@ -81,6 +83,7 @@ public class Principal {
 					JOptionPane.showMessageDialog(null, "La cantidad de elementos en la lista es: " + x, "Mostrando cantidad de datos", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				case "8":
+					//No definido
 					break;
 				case "9":
 					break;
