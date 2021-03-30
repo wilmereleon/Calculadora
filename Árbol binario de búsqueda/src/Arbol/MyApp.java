@@ -16,7 +16,8 @@ public class MyApp extends JFrame {
   String cad;
   Nodo raiz = null;
   Nodo ref = null;
-  ins_nodo ins = new ins_nodo();
+  ins_nodo ins = new ins_nodo ();
+  bor_nodo bor = new bor_nodo ();
   ver_arbol_inorden ver1 = new ver_arbol_inorden ();
   ver_arbol_preorden ver2 = new ver_arbol_preorden ();
   ver_arbol_posorden ver3 = new ver_arbol_posorden ();
@@ -25,16 +26,15 @@ public class MyApp extends JFrame {
   Border borde = new BevelBorder (BevelBorder.RAISED);
   Border pulsado = new LineBorder (Color.red);
   JPanel panel1 = new JPanel ();
-  JPanel panel1a = new JPanel ();
   JPanel panel2 = new JPanel ();
   JPanel panel3 = new JPanel ();
   JLabel label1 = new JLabel ("Valor a insertar en árbol");
   JTextField texto1 = new JTextField (5);
   JButton boton1 = new JButton ("INSERTAR");
-  JButton boton1_a = new JButton ("BORRAR ÚLTIMO");
   JButton boton2_a = new JButton ("ÁRBOL EN INORDEN");
   JButton boton2_b = new JButton ("ÁRBOL EN PREORDEN");
   JButton boton2_c = new JButton ("ÁRBOL EN POSORDEN");
+  JButton boton2_d = new JButton ("BORRAR ÚLTIMO");
   JButton boton3 = new JButton ("SALIR");
   
   JTextArea area1 = new JTextArea (10, 20);
@@ -60,8 +60,8 @@ public class MyApp extends JFrame {
     boton2_b.addActionListener (ver2);
     panel2.add (boton2_c);
     boton2_c.addActionListener (ver3);
-    panel1a.add (boton1_a);
-    boton1_a.addActionListener (ver4);
+    panel2.add (boton2_d);
+    boton2_d.addActionListener (ver4);
     
     getContentPane ().add (panel3, BorderLayout.SOUTH);
     panel3.add (boton3);
@@ -86,11 +86,19 @@ public class MyApp extends JFrame {
   */
   public class ins_nodo implements ActionListener {
     public void actionPerformed (ActionEvent e) {
-      System.out.println("Inserte nodo");
+      System.out.println("Insertar nodo");
       ref = raiz;
       insercion (Integer.parseInt (texto1.getText ().trim()));
     }
   }
+  
+  public class bor_nodo implements ActionListener {
+	    public void actionPerformed (ActionEvent e) {
+	      System.out.println("Borrar nodo");
+	      ref = raiz;
+	      borrado (Integer.parseInt (texto1.getText ().trim()));
+	    }
+	  }
   
   /*
   * El método «insercion» inserta (valga la redundancia) un nodo al árbol.
@@ -135,6 +143,48 @@ public class MyApp extends JFrame {
     }
   }
 }
+  
+  public void borrado (int val) {
+	    ref = raiz;
+	    Nodo aux = ref;
+	    if (raiz == null) {
+	      raiz = new Nodo (val);
+	    }
+	    else {
+	      while (ref != null) {
+	        aux = ref;
+	        if (val < ref.contenido) {
+	          ref = ref.izq;
+	        }
+	        else {
+	          if (val > ref.contenido) {
+	          ref = ref.der;
+	        }
+	      }
+	    }
+	    ref = aux;
+	    if (aux != null) {
+	      if (val < ref.contenido) {
+	        Nodo nuevo = new Nodo (val);
+	        ref.izq = nuevo;
+	        nuevo = null;
+	      }
+	      else {
+	        if (val > ref.contenido && aux != null) {
+	          Nodo nuevo = new Nodo (val);
+	          ref.der = nuevo;
+	          nuevo = null;
+	        }
+	        else {
+	          System.out.println("Nunca se presenta");
+	        }
+	      }
+	    }
+	    else {
+	      System.out.println("Nodo repetido");
+	    }
+	  }
+	}
   
   public class ver_arbol_inorden implements ActionListener {
     public void actionPerformed (ActionEvent e) {
