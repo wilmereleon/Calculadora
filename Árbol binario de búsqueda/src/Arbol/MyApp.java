@@ -18,17 +18,20 @@ public class MyApp extends JFrame {
   Nodo ref = null;
   ins_nodo ins = new ins_nodo();
   ver_arbol_inorden ver1 = new ver_arbol_inorden ();
-  ver_arbol_inorden ver2 = new ver_arbol_inorden ();
-  ver_arbol_inorden ver3 = new ver_arbol_inorden ();
+  ver_arbol_preorden ver2 = new ver_arbol_preorden ();
+  ver_arbol_posorden ver3 = new ver_arbol_posorden ();
+  borrar_arbol ver4 = new borrar_arbol ();
   
   Border borde = new BevelBorder (BevelBorder.RAISED);
   Border pulsado = new LineBorder (Color.red);
   JPanel panel1 = new JPanel ();
+  JPanel panel1a = new JPanel ();
   JPanel panel2 = new JPanel ();
   JPanel panel3 = new JPanel ();
   JLabel label1 = new JLabel ("Valor a insertar en árbol");
   JTextField texto1 = new JTextField (5);
   JButton boton1 = new JButton ("INSERTAR");
+  JButton boton1_a = new JButton ("BORRAR ÚLTIMO");
   JButton boton2_a = new JButton ("ÁRBOL EN INORDEN");
   JButton boton2_b = new JButton ("ÁRBOL EN PREORDEN");
   JButton boton2_c = new JButton ("ÁRBOL EN POSORDEN");
@@ -57,6 +60,8 @@ public class MyApp extends JFrame {
     boton2_b.addActionListener (ver2);
     panel2.add (boton2_c);
     boton2_c.addActionListener (ver3);
+    panel1a.add (boton1_a);
+    boton1_a.addActionListener (ver4);
     
     getContentPane ().add (panel3, BorderLayout.SOUTH);
     panel3.add (boton3);
@@ -158,6 +163,15 @@ public class MyApp extends JFrame {
     }
   }
   
+  public class borrar_arbol implements ActionListener {
+	    public void actionPerformed (ActionEvent e) {
+	      System.out.println("Ver árbol");
+	      cad = "";
+	      borrar (raiz);
+	      area1.setText (cad);
+	    }
+	  }
+  
   public void inorden (Nodo nodin) {
     if (nodin != null) {
       inorden (nodin.izq);
@@ -183,6 +197,15 @@ public class MyApp extends JFrame {
       cad = cad + nodin.contenido + " ";
     }
   }
+  
+  public void borrar (Nodo nodin) {
+	    if (nodin == null) {
+	      borrar (nodin.izq);
+	      String st = new String ("" + nodin.contenido);
+	      cad = cad + nodin.contenido + " ";
+	      borrar (nodin.der);
+	    }
+	  }
   
   public static void main (String args []) {
     MyApp f = new MyApp ();
