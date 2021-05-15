@@ -21,7 +21,6 @@ public class MyApp extends JFrame {
   ver_arbol_inorden ver1 = new ver_arbol_inorden ();
   ver_arbol_preorden ver2 = new ver_arbol_preorden ();
   ver_arbol_posorden ver3 = new ver_arbol_posorden ();
-  borrar_arbol ver4 = new borrar_arbol ();
   
   Border borde = new BevelBorder (BevelBorder.RAISED);
   Border pulsado = new LineBorder (Color.red);
@@ -61,7 +60,7 @@ public class MyApp extends JFrame {
     panel2.add (boton2_c);
     boton2_c.addActionListener (ver3);
     panel2.add (boton2_d);
-    boton2_d.addActionListener (ver4);
+    boton2_d.addActionListener (bor);
     
     getContentPane ().add (panel3, BorderLayout.SOUTH);
     panel3.add (boton3);
@@ -93,12 +92,12 @@ public class MyApp extends JFrame {
   }
   
   public class bor_nodo implements ActionListener {
-	    public void actionPerformed (ActionEvent e) {
-	      System.out.println("Borrar nodo");
-	      ref = raiz;
-	      borrado (Integer.parseInt (texto1.getText ().trim()));
-	    }
-	  }
+	public void actionPerformed (ActionEvent e) {
+	  System.out.println("Insertar nodo");
+	  ref = raiz;
+	  borrado (Integer.parseInt (texto1.getText ().trim()));
+	}
+   }
   
   /*
   * El método «insercion» inserta (valga la redundancia) un nodo al árbol.
@@ -167,13 +166,11 @@ public class MyApp extends JFrame {
 	      if (val < ref.contenido) {
 	        Nodo nuevo = new Nodo (val);
 	        ref.izq = nuevo;
-	        nuevo = null;
 	      }
 	      else {
 	        if (val > ref.contenido && aux != null) {
 	          Nodo nuevo = new Nodo (val);
 	          ref.der = nuevo;
-	          nuevo = null;
 	        }
 	        else {
 	          System.out.println("Nunca se presenta");
@@ -213,14 +210,6 @@ public class MyApp extends JFrame {
     }
   }
   
-  public class borrar_arbol implements ActionListener {
-	    public void actionPerformed (ActionEvent e) {
-	      System.out.println("Ver árbol");
-	      cad = "";
-	      borrar (raiz);
-	      area1.setText (cad);
-	    }
-	  }
   
   public void inorden (Nodo nodin) {
     if (nodin != null) {
@@ -247,15 +236,6 @@ public class MyApp extends JFrame {
       cad = cad + nodin.contenido + " ";
     }
   }
-  
-  public void borrar (Nodo nodin) {
-	    if (nodin == null) {
-	      borrar (nodin.izq);
-	      String st = new String ("" + nodin.contenido);
-	      cad = cad + nodin.contenido + " ";
-	      borrar (nodin.der);
-	    }
-	  }
   
   public static void main (String args []) {
     MyApp f = new MyApp ();
